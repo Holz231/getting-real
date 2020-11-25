@@ -1,0 +1,65 @@
+#---------------------------EFFELKTE---------------------------#
+
+
+with_fx :slicer, phase: 0.125, pulse_width: 0.5 do |slice|
+  
+  #-----------------------------------------EFFEKT CONTROL MODULE (LOGIC)--------------------------------#
+  
+  live_loop :efx_control, sync: :metro do
+    
+    if tick(:firsttime) == 0 then
+      
+      set :slice, slice
+      
+    end
+    
+    sleep 100
+    
+  end
+  
+  #-----------------------------------MELODIE-----------------------#
+  
+  notes = (ring 50, 51, 52, 55, 57, 58, 60).shuffle
+  ampi = (ring 0.25, 0.25)  #spread???
+  
+  use_synth :tb303
+  
+  live_loop :bass, sync: :metro,  delay: 10 do
+    
+    use_bpm 120
+    
+    use_random_seed get(:randseeed)
+    
+    1.times do
+      
+      #with_swing 0.125, pulse: 3, shift: 0  do#(ring 0.2, 0.5 , 4, 8).choose do #rrand(1, 8)
+      
+      # play_pattern (scale :C, :major).pick(1)
+      # play (chord :e, :minor).pick(1)
+      # play scale(:e3, :aeolian).pick(1)
+      
+      z = play notes.choose, attack: 0.25, release: 0.25, sustain: 0.25, amp: ampi.tick if spread(3, 6).tick(:t2) #, cutoff: rrand(70, 120)
+      
+      #end
+      
+      sleep 0.25
+    end
+  end
+end
+
+#--------------------------------------------EFFECT CONTROL------------------------#
+
+live_loop :slice1, sync: :metro do
+  # sync :löl
+  
+  slice = get[:slice]
+  sleep 2
+  control slice, phase: 0.125, pulse_width: 0.5, mix: 0
+  sleep 2
+  control slice, phase: 0.125, pulse_width: 0.5, mix: 0
+  sleep 2
+  control slice, phase: 0.125, pulse_width: 0.5, mix: 0
+  sleep 2
+  
+end
+
