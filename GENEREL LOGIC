@@ -1,0 +1,26 @@
+#LOGIC#
+#---------------------------------MASTER MIXER-------------------------#
+set_mixer_control! amp: 6, lpf: 120
+
+#-------------------------------METRONOM-------------------------------------#
+
+live_loop :metro do
+  sleep 1
+end
+
+#--------------------------RANDOM SEED GENERATOR--------------------#
+
+seeed = 140
+slep = (ring 5, 5)
+
+live_loop :seeeeds, sync: :metro do
+  
+  seeed = seeed + 1
+  
+  set :randseeed, seeed
+  
+  puts seeed
+  
+  sleep slep.tick(:t1)
+  
+end
