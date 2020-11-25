@@ -1,7 +1,9 @@
+
+
 #---------------------------EFFELKTE---------------------------#
 
 
-with_fx :slicer, phase: 0.125, pulse_width: 0.5 do |slice|
+with_fx :slicer, phase: 0.125, pulse_width: 0.5, phase_slide: 0.5, mix_slide: 0.5 do |slice|
   
   #-----------------------------------------EFFEKT CONTROL MODULE (LOGIC)--------------------------------#
   
@@ -19,27 +21,28 @@ with_fx :slicer, phase: 0.125, pulse_width: 0.5 do |slice|
   
   #-----------------------------------MELODIE-----------------------#
   
-  notes = (ring 50, 51, 52, 55, 57, 58, 60).shuffle
-  ampi = (ring 0.25, 0.25)  #spread???
   
-  use_synth :tb303
+  ampi = (ring 1, 1)  #spread???
+  
+  # use_synth :tb303
   
   live_loop :bass, sync: :metro,  delay: 10 do
     
-    use_bpm 120
+    use_bpm 80
     
     use_random_seed get(:randseeed)
     
-    1.times do
+    8.times do
       
-      #with_swing 0.125, pulse: 3, shift: 0  do#(ring 0.2, 0.5 , 4, 8).choose do #rrand(1, 8)
+      #with_swing 0.125, pulse: 6, shift: 0  do#(ring 0.2, 0.5 , 4, 8).choose do #rrand(1, 8)
       
       # play_pattern (scale :C, :major).pick(1)
       # play (chord :e, :minor).pick(1)
       # play scale(:e3, :aeolian).pick(1)
       
-      z = play notes.choose, attack: 0.25, release: 0.25, sustain: 0.25, amp: ampi.tick if spread(3, 6).tick(:t2) #, cutoff: rrand(70, 120)
-      
+      play scale(:e3, :aeolian).choose, attack: 0.1, release: 0.1, sustain: 0.1, amp: ampi.tick if spread(3, 16).tick(:t2) #, cutoff: rrand(70, 120)
+      play scale(:e3, :aeolian).choose, attack: 0.1, release: 0.1, sustain: 0.1, amp: ampi.tick if spread(4, 16).tick(:t3) #, cutoff: rrand(70, 120)
+      play scale(:e3, :aeolian).choose, attack: 0.1, release: 0.1, sustain: 0.1, amp: ampi.tick if spread(5, 16).tick(:t3) #, cutoff: rrand(70, 120)
       #end
       
       sleep 0.25
@@ -56,10 +59,9 @@ live_loop :slice1, sync: :metro do
   sleep 2
   control slice, phase: 0.125, pulse_width: 0.5, mix: 0
   sleep 2
-  control slice, phase: 0.125, pulse_width: 0.5, mix: 0
+  control slice, phase: 0.2, pulse_width: 0.5, mix: 0
   sleep 2
   control slice, phase: 0.125, pulse_width: 0.5, mix: 0
   sleep 2
   
 end
-
