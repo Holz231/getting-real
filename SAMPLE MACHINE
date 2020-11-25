@@ -1,0 +1,67 @@
+
+#---------------------------EFFELKTE---------------------------#
+
+with_fx :slicer, phase: 0.125, pulse_width: 0.5 do |slicea|
+  
+  #-----------------------------------------EFFEKT CONTROL MODULE (LOGIC)--------------------------------#
+  
+  live_loop :efx_control1 do
+    
+    if tick(:firsttime) == 0 then
+      
+      set :slicea, slicea
+      
+    end
+    
+    sleep 100
+    
+  end
+  
+  #-----------------------------------MELODIE-----------------------#
+  
+  ampi = (ring 1, 1)  #spread???
+  
+  live_loop :bass1, sync: :metro, delay: 10 do
+    
+    use_bpm 120
+    
+    use_random_seed get(:randseeed)
+    
+    4.times do
+      
+      #tick #-------------------------------------------------needs tick
+      #a = (ring  0,      0 ,   0,       0 ).look #------------------ selected
+      #b = (ring  0.5,    0.5,  0.5,       0.5 ).look
+      
+      # a = (ring  0.1, 0.4, 0.6).choose #---random selected# !!use num_slices and/or onset!!!
+      #b = a + 0.25
+      
+      with_swing 0.125, pulse: 8 do
+        
+        sample "C:/Users/marce/Desktop/sonic pi/1.wav", num_slices: 6, slice: (ring 0, 1).choose, onset: pick, amp: ampi.shuffle.choose, rate: 1 if spread(16, 16).tick(:t2)           #start: 0, finish: 1, num_slices: 6, slice: (ring 1,1, 2, 2,3, 3,5,6).shuffle.choose,  # - oder - start:a ,finish b - oder -, onset: pick - sleep 0.25
+        
+      end
+      
+      sleep 0.5                   #  (ring 0.5, 0.25, 0.25).choose            #sample_duration "C:/Users/marce/Desktop/sonic pi/1.wav", start: 0, finish: 1, num_slices: 10, slice: 1 # - oder - start:a ,finish b - oder -, onset: pick - sleep 0.25
+    end
+  end
+end
+
+#--------------------------------------------EFFECT CONTROL------------------------#
+
+live_loop :slice12, sync: :metro do
+  # sync :löl
+  
+  slice = get[:slicea]
+  sleep 2
+  control slice, phase: 0.125, pulse_width: 0.1, mix: 0
+  sleep 2
+  control slice, phase: 0.125, pulse_width: 0.1, mix: 0
+  sleep 2
+  control slice, phase: 0.125, pulse_width: 0.1, mix: 0
+  sleep 2
+  
+end
+
+
+
