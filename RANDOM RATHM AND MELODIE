@@ -1,0 +1,50 @@
+live_loop :multi_beat do
+  use_random_seed 122212123222221233
+  12.times do
+    stop
+    sample :elec_hi_snare if one_in(3)
+    sample :drum_cymbal_closed if one_in(3)
+    sample :drum_cymbal_pedal if one_in(3)
+    sample :bd_haus if one_in(3)
+    sleep 0.25
+  end
+end
+
+live_loop :multi_beat2 do
+  
+  
+  use_random_seed 122223
+  
+  5.times do
+    
+    use_synth :chipbass
+    play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).shuffle, 0.125 if one_in(15)
+    play_pattern_timed scale(:b3,  :ahirbhairav, num_octaves: 1).shuffle, 0.125 if one_in(15)
+    play_pattern_timed scale(:a3, :ahirbhairav, num_octaves: 1).shuffle, 0.125 if one_in(12)
+    play_pattern_timed scale(:g3, :ahirbhairav, num_octaves: 1).shuffle, 0.125 if one_in(6)
+    play_pattern_timed scale(:a2, :ahirbhairav, num_octaves: 1).shuffle, 0.25 if one_in(4)
+    play_pattern_timed scale(:b2, :ahirbhairav,num_octaves: 1).shuffle, 0.25 if one_in(2) 
+    
+  end
+end
+
+live_loop :multi_beat23 do
+  
+  
+  use_random_seed 12222342112123222221233
+  
+  10.times do
+    stop #--------------------------------------------------STOPPED--------------------------------#
+    use_synth :chipbass
+    
+    play_pattern_timed chord(:c4, '+5'), 0.25 if one_in(18)
+    
+    play_pattern_timed chord(:g3, '+5'), 0.25 if one_in(14)
+    play_pattern_timed chord(:f3,  '+5'), 0.25 if one_in(8)
+    play_pattern_timed chord(:c3, '+5'), 0.25 if one_in(2)
+    
+    
+    sleep 0.25
+    
+  end
+end
