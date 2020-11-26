@@ -6,6 +6,14 @@ set_mixer_control! amp: 6, lpf: 120
 
 live_loop :metro do
   sleep 1
+
+end
+#---------------------------RANDOM SEED SAVER-----------------#
+
+live_loop :rands do
+  s = (ring 400,500,600,700).tick
+  set :randseeed2, s
+  sleep 5
 end
 
 #--------------------------RANDOM SEED GENERATOR--------------------#
