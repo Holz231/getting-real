@@ -17,7 +17,7 @@ with_fx :slicer, phase: 0.125, pulse_width: 0.5 do |slicea|
     
   end
   
-  #-----------------------------------MELODIE-----------------------#
+  #-----------------------------------MELODIE-----------------------#  Entweder IF SPREAD ODER IF ONE_IN
   
   ampi = (ring 1, 1)  #spread???
   
@@ -38,8 +38,7 @@ with_fx :slicer, phase: 0.125, pulse_width: 0.5 do |slicea|
       
       with_swing 0.125, pulse: 8 do
         
-        sample "C:/Users/marce/Desktop/sonic pi/1.wav", num_slices: 6, slice: (ring 0, 1).choose, onset: pick, amp: ampi.shuffle.choose, rate: 1 if spread(16, 16).tick(:t2)           #start: 0, finish: 1, num_slices: 6, slice: (ring 1,1, 2, 2,3, 3,5,6).shuffle.choose,  # - oder - start:a ,finish b - oder -, onset: pick - sleep 0.25
-       #evtl. mehrmals das sample mit unterschiedlichem Spread
+        sample "C:/Users/marce/Desktop/sonic pi/1.wav", num_slices: 6, slice: (ring 0, 1).choose, onset: pick, amp: ampi.shuffle.choose, rate: 1      #start: 0, finish: 1, num_slices: 6, slice: (ring 1,1, 2, 2,3, 3,5,6).shuffle.choose, 
       end
       
       sleep 0.5                   #  (ring 0.5, 0.25, 0.25).choose            #sample_duration "C:/Users/marce/Desktop/sonic pi/1.wav", start: 0, finish: 1, num_slices: 10, slice: 1 # - oder - start:a ,finish b - oder -, onset: pick - sleep 0.25
