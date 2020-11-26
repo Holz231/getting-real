@@ -1,0 +1,36 @@
+live_loop :rands do
+  s = (ring 400,500,600,700).tick
+  set :randseeed, s
+  sleep 5
+end
+
+
+ampi = (ring 1, 1)  #spread???
+
+# use_synth :tb303
+
+live_loop :bass do
+  
+  use_bpm 80
+  
+  use_random_seed get(:randseeed)
+  
+  8.times do
+    
+    #with_swing 0.125, pulse: 6, shift: 0  do#(ring 0.2, 0.5 , 4, 8).choose do #rrand(1, 8)
+    
+    # play (chord :e, :minor).pick(1)
+    #play_pattern_timed chord(:E3, :m13), [0.25, 0.5]
+    # play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).shuffle
+    
+    use_synth :chipbass
+    play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).take(4).pick(1), 0.125 if one_in(15)
+    play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).take(4).pick(1), 0.125 if one_in(15)
+    play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).take(4).pick(1), 0.125 if one_in(12)
+    play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).take(4).pick(1), 0.125 if one_in(6)
+    play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).take(4).pick(1).shuffle, 0.25 if one_in(4)
+    play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).take(4).pick(1).shuffle, 0.25 if one_in(2)
+    
+    sleep 0.25
+  end
+end
