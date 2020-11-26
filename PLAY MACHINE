@@ -35,15 +35,12 @@ with_fx :slicer, phase: 0.125, pulse_width: 0.5, phase_slide: 0.5, mix_slide: 0.
     8.times do
       
       #with_swing 0.125, pulse: 6, shift: 0  do#(ring 0.2, 0.5 , 4, 8).choose do #rrand(1, 8)
-      
-      # play_pattern (scale :C, :major).pick(1)
-      # play (chord :e, :minor).pick(1)
-      # play scale(:e3, :aeolian).pick(1)
-      
-      play scale(:e3, :aeolian).choose, attack: 0.1, release: 0.1, sustain: 0.1, amp: ampi.tick if spread(3, 16).tick(:t2) #, cutoff: rrand(70, 120)
-      play scale(:e3, :aeolian).choose, attack: 0.1, release: 0.1, sustain: 0.1, amp: ampi.tick if spread(4, 16).tick(:t3) #, cutoff: rrand(70, 120)
-      play scale(:e3, :aeolian).choose, attack: 0.1, release: 0.1, sustain: 0.1, amp: ampi.tick if spread(5, 16).tick(:t3) #, cutoff: rrand(70, 120)
-      #end
+
+    # play (chord :e, :minor).pick(1)
+    #play_pattern_timed chord(:E3, :m13).pick(1), [0.25, 0.5]
+    # play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).pick(1), [0.25, 0.5]
+   
+   #end
       
       sleep 0.25
     end
