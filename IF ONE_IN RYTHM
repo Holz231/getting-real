@@ -1,8 +1,3 @@
-live_loop :rands do
-  s = (ring 400,500,600,700).tick
-  set :randseeed, s
-  sleep 5
-end
 
 
 ampi = (ring 1, 1)  #spread???
