@@ -1,7 +1,7 @@
 #---------------------------EFFELKTE---------------------------#
 
 
-with_fx :slicer, phase: 0.125, pulse_width: 0.5, phase_slide: 0.5, mix_slide: 0.5 do |slice|
+with_fx :slicer, phase: 0.125, pulse_width: 0.5, phase_slide: 0.5, mix_slide: 0.5 do |slicea|
   
   #-----------------------------------------EFFEKT CONTROL MODULE (LOGIC)--------------------------------#
   
@@ -9,11 +9,11 @@ with_fx :slicer, phase: 0.125, pulse_width: 0.5, phase_slide: 0.5, mix_slide: 0.
     
     if tick(:firsttime) == 0 then
       
-      set :slice, slice
+      set :slicea, slicea
       
     end
     
-    sleep 100
+    sleep 10
     
   end
   
@@ -28,19 +28,21 @@ with_fx :slicer, phase: 0.125, pulse_width: 0.5, phase_slide: 0.5, mix_slide: 0.
     
     use_bpm 80
     
-    use_random_seed get(:randseeed)
+    use_random_seed get(:randseeed2)
     
     8.times do
       
       #with_swing 0.125, pulse: 6, shift: 0  do#(ring 0.2, 0.5 , 4, 8).choose do #rrand(1, 8)
-      
       #    play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).shuffle
-#play_pattern_timed chord(:E3, :m13), [0.25, 0.5]
-# play (chord :e, :minor)#.pick(1)
+      #play_pattern_timed chord(:E3, :m13), [0.25, 0.5]
       
+      # play (chord :e, :minor)#.pick(1)
+      use_synth :chipbass
       play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).take(4).pick(1), 0.25, sustain: 0.1, release: 0.1, attack: 0.1, amp: ampi.tick if spread(3, 16).tick(:t2) #, cutoff: rrand(70, 120)
-      play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).take(4).pick(1), 0.25, sustain: 0.1, release: 0.1, attack: 0.1, amp: ampi.tick if spread(4, 16).tick(:t3) #, cutoff: rrand(70, 120)
-      play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).take(4).pick(1), 0.25, sustain: 0.1, release: 0.1, attack: 0.1, amp: ampi.tick if spread(5, 16).tick(:t3) #, cutoff: rrand(70, 120)
+      use_synth :dpulse
+      play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).take(4).pick(1), 0.5, sustain: 0.1, release: 0.1, attack: 0.1, amp: ampi.tick if spread(4, 16).tick(:t3) #, cutoff: rrand(70, 120)
+      use_synth :dark_ambience
+      play_pattern_timed scale(:b3, :ahirbhairav, num_octaves: 1).take(4).pick(1), 0.1, sustain: 1, release: 0.1, attack: 0.1, amp: ampi.tick if spread(5, 16).tick(:t3) #, cutoff: rrand(70, 120)
       
       #end
       
@@ -51,16 +53,16 @@ end
 
 #--------------------------------------------EFFECT CONTROL------------------------#
 
-live_loop :slice1, sync: :metro do
+live_loop :slice12, sync: :metro do
   # sync :löl
   
-  slice = get[:slice]
+  slice = get[:slicea]
   sleep 2
-  control slice, phase: 0.125, pulse_width: 0.5, mix: 0
+  control slice, phase: 0.125, pulse_width: 0.1, mix: 0
   sleep 2
-  control slice, phase: 0.2, pulse_width: 0.5, mix: 0
+  control slice, phase: 0.125, pulse_width: 0.1, mix: 0
   sleep 2
-  control slice, phase: 0.125, pulse_width: 0.5, mix: 0
+  control slice, phase: 0.125, pulse_width: 0.1, mix: 0
   sleep 2
   
 end
