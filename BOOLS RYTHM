@@ -1,0 +1,22 @@
+
+live_loop :dosds do
+  
+  n = (ring 0,1,2,3,4,5)
+  
+  use_random_seed 2121022222122321554122111
+  
+  3. times do
+    
+    #with_swing 0.125, pulse: 4 do
+    
+    sample "C:/Users/marce/Desktop/sonic pi/BIBLIOTHEK SAMPS/DRUM/KICK/", 0 if (bools 0,0,0,1,0).shuffle.tick(:toa)
+    sample "C:/Users/marce/Desktop/sonic pi/BIBLIOTHEK SAMPS/DRUM/KICK/", 1, amp: 10 if (bools 0,0,1,0,0).shuffle.tick(:t1)
+    sample "C:/Users/marce/Desktop/sonic pi/BIBLIOTHEK SAMPS/DRUM/KICK/", (ring 2, 3).tick(:t2) if (bools 1,0,0,0,0).shuffle.tick(:t3)
+    
+    #end
+    
+    
+    
+    sleep 0.125
+  end
+end
