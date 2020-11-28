@@ -35,13 +35,12 @@ with_fx :slicer, phase: 0.125, pulse_width: 0.5 do |slicec|
       #a = (ring  0,      0 ,   0,       0 ).look #------------------ selected
       #b = (ring  0.5,    0.5,  0.5,       0.5 ).look
       
-      # a = (ring  0.1, 0.4, 0.6).choose #---random selected# !!use num_slices and/or onset!!!
+      # a = (ring  0.1, 0.4, 0.6).choose #-----------FUNKTIONIERT SCHLECHT, LIEBER SAMPLE SELBST SCHNEIDEN------IF ONE_IN / IF SPREAD / BOOLS ------------------#
       #b = a + 0.25
       
       #with_swing 0.125, pulse: 8 do
       
-      sample "C:/Users/marce/Desktop/sonic pi/1.wav", num_slices: 6, slice: (ring 0, 1).choose, onset: pick, amp: ampi.shuffle.choose, rate: 1      #start: 0, finish: 1, num_slices: 6, slice: (ring 1,1, 2, 2,3, 3,5,6).shuffle.choose,
-      #----- SAMPLE MIT ONSET / IF ONE_IN / IF SPREAD ODER VOLLSTÄNDIG BZW. CUTTET 
+      sample "C:/Users/marce/Desktop/sonic pi/1.wav", num_slices: 6, slice: (ring 0, 1).choose, onset: pick, amp: ampi.shuffle.choose, rate: 1      #start: 0, finish: 1
       # end
       
       sleep 0.5                   #  (ring 0.5, 0.25, 0.25).choose            #sample_duration "C:/Users/marce/Desktop/sonic pi/1.wav", start: 0, finish: 1, num_slices: 10, slice: 1 # - oder - start:a ,finish b - oder -, onset: pick - sleep 0.25
