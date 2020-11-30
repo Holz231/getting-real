@@ -1,6 +1,5 @@
-
-eins = chord(:g3, :minor7)
-zwei = chord(:a2, :minor7)
+eins = chord(:gs3, :minor7)
+zwei = chord(:as2, :minor7)
 
 live_loop :dron do
   
@@ -14,11 +13,12 @@ live_loop :dron do
     
     sleep 3
     
-    play eins, attack: 1, sustain: 1, release: 1
+    play zwei, attack: 1, sustain: 1, release: 1
     
     sleep 3
     
   end
 end
-    
 
+
+# :gs3, :as3, :b3, :cs4, :ds4, :e4, :fs4, gs4
