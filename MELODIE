@@ -1,48 +1,27 @@
 live_loop :lol, sync: :dron do
-  
-  use_bpm 80
-  
-  use_random_seed 112302312230
-  
-  use_synth  :dsaw
-  use_synth_defaults
-  
-  3.times do
-    
-    play (ring :e2, :fs4).choose , sustain: 0.1 if one_in(3)
-    
-    sleep 0.25
-    
-    play (ring :gs3,:as3).choose , sustain: 0.1
-    
-    sleep 0.25
-    
-    play (ring :gs3, :e3).choose, sustain: 0.1
-    
-    # :gs3, :as3, :b3, :cs4, :ds4, :e4, :fs4, gs4
-    
-    sleep 0.25
-    
-    play (ring :gs3, :e2).choose, sustain: 0.1
-    
-    sleep (ring 0.25, 0.5).choose
-    
-    play (ring :cs4, :cs4, :ds4).choose, sustain: 0.1
-    
-    sleep 0.25
-    
-    play :cs4, sustain: 0.1
-    
-    sleep 0.25
-    
-    play (ring :cs4,:ds4).choose, sustain: 0.1
-    
-    sleep (ring 0.25, 0.25).choose
-    
-    play (ring :gs4,:cs4).choose , sustain: 0.1
-    
-    sleep (ring 0.25, 0.5).choose
-  end
-end
-
-# :gs3, :as3, :b3, :cs4, :ds4, :e4, :fs4, gs4
+      
+      use_bpm 80
+      
+      use_random_seed 112231224234312323123312
+      
+      use_synth  :dsaw
+      use_synth_defaults
+      
+      3.times do
+        #with_swing 0.125, pulse: 6 do
+        play chord(:es3, 'm11+').pick(1), sustain: 0.1, attack: 0.1, release: 0.1
+        sleep 0.25
+        play chord(:a4, 'm11+').pick(1), sustain: 0.1, attack: 0.1, release: 0.1
+        #end
+        sleep 0.25
+        play chord(:es3, 'm11+').pick(1), sustain: 0.1, attack: 0.1, release: 0.1
+        sleep 0.25
+        play chord(:es3, 'm11+').pick(1), sustain: 0.1, attack: 0.1, release: 0.1
+        sleep 0.25
+        play chord(:es3, 'm11+').pick(1), sustain: 0.1, attack: 0.1, release: 0.1
+        sleep 0.25
+        play chord(:es3, 'm11+').pick(1), sustain: 0.1, attack: 0.1, release: 0.1
+        sleep 0.25
+        
+      end
+    end
