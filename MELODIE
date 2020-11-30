@@ -1,0 +1,29 @@
+
+eins = :g4
+zwei = :e4
+drei = :c5
+
+live_loop :melod do
+  
+  use_bpm 80
+  
+  use_random_seed 1211234455412323223301230
+  
+  10.times do
+    
+    play (ring eins, zwei).choose, attack: 0.1, sustain: 0.1, release: 0.1
+    
+    sleep 0.5
+    
+    play zwei, attack: 0.1, sustain: 0.1, release: 0.1
+    
+    
+    sleep (ring 0.5, 0.25).choose
+    
+    
+    play (ring drei, zwei).choose, attack: 0.1, sustain: 0.1, release: 0.1
+    
+    sleep 0.5
+    
+  end
+end
