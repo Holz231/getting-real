@@ -1,20 +1,24 @@
-s = chord(:E3, :minor)
-n = chord(:g2, :minor)
 
-live_loop :drones, sync: :melod do
-  stop
-  
-  use_random_seed 120
+eins = chord(:g3, :minor7)
+zwei = chord(:a2, :minor7)
+
+live_loop :dron do
   
   use_bpm 100
-  use_synth :dsaw
-  8.times do
+  
+  use_random_seed 100
+  
+  4.times do
     
+    play eins, attack: 1, sustain: 1, release: 1 if one_in(2)
     
-    play (ring s, n).tick(:t1), attack: 1, sustain: 0.75, release: 1  if one_in(1)
+    sleep 3
     
+    play eins, attack: 1, sustain: 1, release: 1
     
-    sleep 2
+    sleep 3
     
   end
 end
+    
+
