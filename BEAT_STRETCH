@@ -1,1 +1,12 @@
 
+live_loop :dos do
+  
+  use_random_seed 121123123231123124231232023
+  30.times do
+    
+    sample :guit_em9, beat_stretch: 10, num_slices: 120, slice: choose, amp: 6
+    
+    sleep sample_duration :guit_em9, beat_stretch: 10, num_slices: 60, slice: choose
+  end
+  
+end
