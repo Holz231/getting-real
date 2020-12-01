@@ -1,29 +1,38 @@
 
+eins = (ring :cs3, :cs3,:e3,:fs3)
+zwei = (ring :cs4, :e4,:fs4, :fs4,:fs4, :gs4,  :a4, :cs4)
+
+
+use_synth :mod_fm
 live_loop :möp do
   use_bpm 90
   
-  use_random_seed 2012321231221223322323123423242331211232323231121233232322
+  use_random_seed 23123
+  
   
   # use_synth :mod_tri
-  6.times do
-    5.times do
+  3.times do
+    6.times do
       
       # with_swing 0.100, pulse: 8 do
       
       
+      use_synth :supersaw
+      use_synth_defaults res: 0.25
       play eins.choose, attack: 0.1 , release: 0.1, sustain: 0.1 if spread(8, 9).tick(:as)
       
       # end
       
-      sleep (ring 0.25, 0.25, 0.25, 0.5, 0.25, 0.25).tick(:aass)
+      sleep (ring 0.25, 0.25, 0.5, 0.25, 0.25, 0.5, 0.5).tick(:aass)
       
       
       
     end
   end
   
-  6.times do
+  4.times do
     
+    use_synth :supersaw
     play zwei.choose, amp: 0.74, attack: 0.1 , release: 0.1, sustain: 0.1 if spread(8, 9).tick(:asass)
     
     sleep (ring 0.25, 0.25, 0.25, 0.5, 0.25, 0.25).tick(:aasgfss)
