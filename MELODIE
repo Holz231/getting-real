@@ -1,41 +1,19 @@
 
-eins = (ring :cs3, :cs3,:e3,:fs3)
-zwei = (ring :cs4, :e4,:fs4, :fs4,:fs4, :gs4,  :a4, :cs4)
 
 
-use_synth :mod_fm
-live_loop :möp do
-  use_bpm 90
+live_loop :asd do
   
-  use_random_seed 23123
+  use_random_seed 231212233232312300
   
-  
-  # use_synth :mod_tri
-  3.times do
-    6.times do
-      
-      # with_swing 0.100, pulse: 8 do
-      
-      
-      use_synth :supersaw
-      use_synth_defaults res: 0.25
-      play eins.choose, attack: 0.1 , release: 0.1, sustain: 0.1 if spread(8, 9).tick(:as)
-      
-      # end
-      
-      sleep (ring 0.25, 0.25, 0.5, 0.25, 0.25, 0.5, 0.5).tick(:aass)
-      
-      
-      
+  6.times do
+    10.times do
+      sample "C:/Users/marce/Desktop/sonic pi/BIBLIOTHEK SAMPS/GOA/GOA1.wav", rpitch: 10, beat_stretch: 10, onset: choose   #, beat_stretch: 15, num_slices: 100, slice: choose
+      sleep (ring 0.25,0.25,0.25,0.125,0.25,0.25,0.25, 0.125).tick(:sd)
     end
   end
   
-  4.times do
-    
-    use_synth :supersaw
-    play zwei.choose, amp: 0.74, attack: 0.1 , release: 0.1, sustain: 0.1 if spread(8, 9).tick(:asass)
-    
-    sleep (ring 0.25, 0.25, 0.25, 0.5, 0.25, 0.25).tick(:aasgfss)
+  1.times do
+    sample "C:/Users/marce/Desktop/sonic pi/BIBLIOTHEK SAMPS/GOA/GOA1.wav", start: 0, finish: 0.2
+    sleep sample_duration "C:/Users/marce/Desktop/sonic pi/BIBLIOTHEK SAMPS/GOA/GOA1.wav", start: 0, finish: 0.2
   end
-  
 end
