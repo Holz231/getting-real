@@ -15,3 +15,21 @@ live_loop :asd do
   end
 end
 
+
+live_loop :asd2, sync: :asd do
+  
+  use_random_seed 2332463451234234124123523423434236123456651234456123235126
+  
+  
+  10.times do
+    
+    #with_swing 0.125, pulse: 2 do
+    sample "C:/Users/marce/Desktop/sonic pi/BIBLIOTHEK SAMPS/BASS/BASSCHOPPED/", (ring 0, 5).choose, cutoff: rrand(90, 120), amp: 0.8
+    
+    # end
+    
+    sleep (ring 0.5).tick(:sd)
+  end
+  
+end
+
