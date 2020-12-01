@@ -1,0 +1,17 @@
+
+live_loop :asd do
+  
+  use_random_seed 233246345654456123235126
+  
+  6.times do
+    10.times do
+      #with_swing 0.125, pulse: 1 do
+      sample "C:/Users/marce/Desktop/sonic pi/BIBLIOTHEK SAMPS/GOA/GOA1CUTTET/", (ring 0,1,2,3,4,5,6,7,8,9,10,11).choose, cutoff: rrand(90, 120)
+      
+      
+      
+      sleep (ring 0.25,0.25,0.25,0.25,0.25,0.25,0.25, 0.25, 0.25, 0.25, 0.25).tick(:sd)
+    end
+  end
+end
+
