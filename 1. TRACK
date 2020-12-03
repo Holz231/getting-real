@@ -1,9 +1,11 @@
 
 set_mixer_control! lpf: 120, lpf_slide: 4
 
+
 live_loop :metroo do
   sleep 1
 end
+
 
 live_loop :kick1, sync: :metroo do
   
@@ -11,6 +13,7 @@ live_loop :kick1, sync: :metroo do
     sample "C:/Users/marce/Desktop/sonic pi/FIRST SONG SAMPS/KICK", 1 if (bools 1, 1, 1, 1, 1, 1, 1, 0).tick(:qweasfassdfa)
     sleep 0.25
   end
+  
   3.times do
     sample "C:/Users/marce/Desktop/sonic pi/FIRST SONG SAMPS/KICK", 1 if (bools 1, 1, 1, 1, 1, 1, 1, 1).tick(:qweasfassdfa)
     sleep 0.125
@@ -24,11 +27,13 @@ live_loop :cymbal1, sync: :metroo do
     sample "C:/Users/marce/Desktop/sonic pi/FIRST SONG SAMPS/cymbal", 0, amp: 0.3 if (bools 1, 1, 1, 0, 1, 1, 1, 0).tick(:qweasfgdfassdfa)
     sleep 0.125
   end
+  
   1.times do
     sample "C:/Users/marce/Desktop/sonic pi/FIRST SONG SAMPS/cymbal", (ring 0,0,0,0,0,1).tick(:as), amp: 0.6 if (bools 1, 1, 1).tick(:qweafhsfgdfassdfa)
     sleep 0.25
   end
 end
+
 
 live_loop :TOM1, sync: :metroo do
   
@@ -48,10 +53,10 @@ live_loop :SNAPS1, sync: :metroo do
   1.times do
     4.times do
       sample "C:/Users/marce/Desktop/sonic pi/FIRST SONG SAMPS/snaps", (ring 0,0,0,0,0,1).tick(:as), amp: 0.3 if (bools 1, 0, 0, 0, 0, 0, 0, 0).tick(:qwea)
-      
       sleep 0.125
     end
   end
+  
   1.times do
     sample "C:/Users/marce/Desktop/sonic pi/FIRST SONG SAMPS/snaps", (ring 0,0,0,0,0,1).tick(:as), amp: 0.3 if (bools 1, 1, 1, 0, 0, 0, 0, 0).tick(:qwea)
     
@@ -66,7 +71,9 @@ live_loop :as, sync: :metroo do
   
   use_bpm 60
   with_fx :echo, phase: 0.5 do
+    
     use_random_seed (ring 512342367868766534534578, 51234231612312312545672135732121, 51234231611231232312312545672135732121).tick(:asd)
+    
     3.times do
       24.times do
         use_synth :fm
@@ -78,4 +85,7 @@ live_loop :as, sync: :metroo do
     end
   end
 end
+
+
+
 
