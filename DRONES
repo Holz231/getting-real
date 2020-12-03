@@ -1,0 +1,15 @@
+
+live_loop :asd do
+  with_fx :whammy, grainsize: 0.05, transpose: 5  do
+    use_random_seed 231212312312332367712332223
+    
+    10.times do
+      #with_swing 0.125, pulse: 1 do
+      sample "C:/Users/marce/Desktop/sonic pi/BIBLIOTHEK SAMPS/GOA/", 0, beat_stretch: 60
+      
+      sleep sample_duration "C:/Users/marce/Desktop/sonic pi/BIBLIOTHEK SAMPS/GOA/", 0, beat_stretch: 60
+      
+    end
+  end
+end
+
