@@ -1,10 +1,24 @@
 live_loop :as do
-  use_random_seed 5213
-  10.times do
-    use_synth :fm
-    use_synth_defaults divisor: rrand(100, 0.05) , depth: 7, attack: 0, sustain: 0, release: 0.025, amp: 3, cutoff: 100
-    play :b2
-    sleep 0.25
+  
+  use_random_seed 511232
+  4.times do
+    3.times do
+      use_synth :fm
+      use_synth_defaults divisor: rrand(100, 0.05) , depth: 7, attack: 0, sustain: 0, release: 0.025, amp: 3, cutoff: 100
+      play :b2
+      sleep 0.125
+      play :cs3
+      sleep 0.25
+    end
+    
+    
+    
+    5.times do
+      play :e3
+      sleep 0.125
+      play :fs3
+      sleep 0.25
+    end
   end
 end
 
