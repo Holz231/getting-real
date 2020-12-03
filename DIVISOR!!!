@@ -1,24 +1,52 @@
 live_loop :as do
-  
-  use_random_seed 511232
-  4.times do
-    3.times do
-      use_synth :fm
-      use_synth_defaults divisor: rrand(100, 0.05) , depth: 7, attack: 0, sustain: 0, release: 0.025, amp: 3, cutoff: 100
-      play :b2
-      sleep 0.125
-      play :cs3
-      sleep 0.25
-    end
-    
-    
-    
-    5.times do
-      play :e3
-      sleep 0.125
-      play :fs3
-      sleep 0.25
+  with_fx :echo, phase: 0.5 do
+    use_random_seed 51231322123311232
+    4.times do
+      stop
+      3.times do
+        use_synth :fm
+        use_synth_defaults divisor: rrand(100, 0.05) , depth: 7, attack: 0, sustain: 0, release: 0.025, amp: 3, cutoff: 100
+        play :b2
+        sleep 0.125
+        play :cs3
+        sleep 0.25
+      end
+      
+      
+      
+      5.times do
+        play :e3
+        sleep 0.125
+        play :fs3
+        sleep 0.25
+      end
     end
   end
 end
+
+
+
+live_loop :as22 do
+  with_fx :echo, phase: 0.5 do
+    use_random_seed 51231321
+    4.times do
+      3.times do
+        use_synth :fm
+        use_synth_defaults divisor: rrand(100, 0.05) , depth: 7, attack: 0, sustain: 0.1254, release: 0.03, amp: 3, cutoff: 100
+        play :c2
+        sleep 0.125
+        play :cs2
+        sleep 0.125
+      end
+      
+      5.times do
+        play :e2
+        sleep 0.25
+        play :fs2
+        sleep 0.25
+      end
+    end
+  end
+end
+
 
