@@ -1,15 +1,13 @@
 as = (ring :b2, :b2, :b2, :cs3, :e3, :cs4)
 live_loop :as do
   with_fx :echo, phase: 0.5 do
-    use_random_seed 5121123123
+    use_random_seed 511685672421312351236765
     
     20.times do
       use_synth :fm
-      use_synth_defaults divisor: rrand(100, 0.05) , depth: 7, attack: 0, sustain: 0, release: 0.025, amp: 3, cutoff: 100
+      use_synth_defaults divisor: (ring 100, 50, 1, 0.125).choose , depth: 7, attack: 0, sustain: 0, release: rrand(0, 0.125), amp: 3, cutoff: 100
       play as.choose
-      sleep (ring 0.125, 0.25, 0.25).tick(:assd)
+      sleep (ring 0.25, 0.125, 0.125).tick(:assd)
     end
   end
 end
-
-
