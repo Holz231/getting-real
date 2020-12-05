@@ -1,0 +1,93 @@
+set_mixer_control! lpf: 120, lpf_slide: 4
+
+with_fx :level, amp: 1 do |lev|
+  
+  live_loop :confi do
+    if tick(:firsttime) == 0 then
+      set :lev, lev
+    end
+    sleep 10
+  end
+  
+  
+  live_loop :das do
+    use_bpm 80
+    use_random_seed (ring 1211267831796232312323123342976320231230, 121126783179623231212345323123342976320231230,12112123123543678317).tick(:asd)
+    
+    8.times do
+      
+      sample "C:/Users/marce/Desktop/beats", (ring 0, 1,  2, 3).choose ,rpitch: 2, beat_stretch: 20, onset: choose
+      
+      sleep 0.25
+      
+    end
+  end
+end
+
+with_fx :ixi_techno, phase: 0.125, res: 0.75, mix: 0 do |y|
+  with_fx :level, amp: 1 do |lev1|
+    
+    live_loop :confi1 do
+      
+      if tick(:firsttime) == 0 then
+        set :lev1, lev1
+        set :y, y
+        
+      end
+      sleep 10
+    end
+    
+    
+    live_loop :bass, sync: :das do
+      
+      
+      
+      
+      
+      use_bpm 80
+      
+      
+      use_random_seed (ring 123112312,123456, 1231132123).tick(:aasfsd)
+      
+      
+      1.times do
+        16.times do                   # beat_stretch: 16, num_slices: 30, slice: choose # onset: choose # start: 0, finsish: 1#
+          
+          sample "C:/Users/marce/Desktop/bass", (ring 0).choose, rpitch: 4, beat_stretch: 20, onset: choose if (bools 1,1,1,1,1,1,1,1,1,1,1).choose
+          
+          sleep (ring 0.25, 0.25,0.25,0.25).choose
+        end
+      end
+    end
+  end
+end
+
+
+live_loop :confiexe do
+  sleep 4
+  control get(:lev), amp: 1, amp_slide: 4
+  sleep 4
+  control get(:lev), amp: 1
+  
+end
+
+
+live_loop :confiexe1 do
+  sleep 4
+  control get(:lev1), amp: 0.9, amp_slide: 4
+  sleep 4
+  control get(:lev1), amp: 0.9
+  
+end
+
+
+live_loop :confiexe21 do
+  
+  control get(:y), phase: 0.9, phase_slide: 4, mix: 0, res: 0.125, res_slide: 4
+  sleep 10
+  control get(:y), phase: 0.125, phase_slide: 4, mix: 0, res: 0.9
+  sleep 10
+  control get(:y), phase: 0.125, phase_slide: 4, mix: 0, mix_slide: 2
+  sleep 10
+end
+
