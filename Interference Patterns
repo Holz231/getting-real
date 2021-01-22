@@ -1,4 +1,5 @@
 
+
 set_mixer_control! amp: 1
 
 
@@ -7,6 +8,7 @@ set :rslep, 1
 set :sleeps1,1
 set :sleeps2,1
 set :sleeps3,1
+set :sleeps4, 1
 
 set :degr3,1
 set :degr2,1
@@ -19,7 +21,6 @@ set :rel2, 1
 set :rel3,1
 set :rel4, 1
 
-set_mixer_control! amp: 1
 
 #----------------------------------------------METRONOM-----------------------------------------
 live_loop :metro do
@@ -36,178 +37,251 @@ end
 
 live_loop :rslep do
   #7
-  set :sleeps2, get(:sleeps1)
-  sleep get(:sleeps2)
-  
-  set :sleeps2, get(:sleeps1) + (ring 0.25, 0).tick(:safnhiogqq4)
-  sleep get(:sleeps2)
-  
-  set :sleeps2, get(:sleeps1)
-  sleep get(:sleeps2)
-  
-  set :sleeps2, get(:sleeps1)
-  sleep get(:sleeps2)
-  
-  set :sleeps2, get(:sleeps1)
-  sleep get(:sleeps2)
-  
-  set :sleeps2, get(:sleeps1)
-  sleep get(:sleeps2)
-  
-  set :sleeps2, get(:sleeps1)
+  8.times do
+    set :sleeps2, get(:sleeps1)
+    sleep get(:sleeps2)
+    
+    set :sleeps2, get(:sleeps1) + (ring 0).tick(:safnhiogqq4)
+    sleep get(:sleeps2)
+    
+    set :sleeps2, get(:sleeps1) + 0.125
+    sleep get(:sleeps2)
+    
+    set :sleeps2, get(:sleeps1)
+    sleep get(:sleeps2)
+    
+    set :sleeps2, get(:sleeps1)
+    sleep get(:sleeps2)
+    
+    set :sleeps2, get(:sleeps1)
+    sleep get(:sleeps2)
+  end
+  set :sleeps2, get(:sleeps1) + 0.125
   sleep get(:sleeps2)
 end
 
 
 live_loop :rslep1 do
-  #6
-  set :sleeps3, get(:sleeps2) + 0.25
+  #5
+  5.times do
+    set :sleeps3, get(:sleeps2)
+    sleep get(:sleeps3)
+    
+    set :sleeps3, get(:sleeps2) +0.125
+    sleep get(:sleeps3)
+    
+    set :sleeps3, get(:sleeps2)
+    sleep get(:sleeps3)
+  end
+  set :sleeps3, get(:sleeps2) + (ring 0.125).tick(:safnhiogqq4)
   sleep get(:sleeps3)
+end
+
+live_loop :rslep2 do
+  #3
+  set :sleeps4, get(:sleeps3)
+  sleep get(:sleeps4)
   
-  set :sleeps3, get(:sleeps2)
-  sleep get(:sleeps3)
+  set :sleeps4, get(:sleeps3)
+  sleep get(:sleeps4)
   
-  set :sleeps3, get(:sleeps2)
-  sleep get(:sleeps3)
-  
-  set :sleeps3, get(:sleeps2)
-  sleep get(:sleeps3)
-  
-  set :sleeps3, get(:sleeps2) + (ring 0.25, 0).tick(:safnhiogqq4)
-  sleep get(:sleeps3)
+  set :sleeps4, get(:sleeps3)
+  sleep get(:sleeps4)
 end
 
 
 #----------------------------------------DEGREES------------------------------------------------------------------------------------------
 live_loop :roots do
-  #8
-  set :degr, (ring 1,1,1,1,1,1,2).tick(:gije3)
-  sleep get(:sleeps3)
+  #9
+  set :degr, (ring 1,1,1,1,1,1,1,1).tick(:gije3)
+  sleep get(:sleeps4)
 end
 
 live_loop :roots1 do
   #7
-  set :degr1, get(:degr)
-  sleep get(:sleeps3)
+  12.times do
+    set :degr1, get(:degr) +0
+    sleep get(:sleeps4)
+    
+    set :degr1, get(:degr) + 2
+    sleep get(:sleeps4)
+    
+    set :degr1, get(:degr) +0
+    sleep get(:sleeps4)
+    
+    set :degr1, get(:degr) +0
+    sleep get(:sleeps4)
+    
+    set :degr1, get(:degr)
+    sleep get(:sleeps4)
+  end
+  
+  set :degr1, get(:degr) +6
+  sleep get(:sleeps4)
   
   set :degr1, get(:degr)
-  sleep get(:sleeps3)
-  
-  set :degr1, get(:degr)
-  sleep get(:sleeps3)
-  
-  set :degr1, get(:degr) +5
-  sleep get(:sleeps3)
-  
-  set :degr1, get(:degr)
-  sleep get(:sleeps3)
-  
-  set :degr1, get(:degr)
-  sleep get(:sleeps3)
-  
-  set :degr1, get(:degr)
-  sleep get(:sleeps3)
+  sleep get(:sleeps4)
 end
 
 live_loop :roots2 do
   #5
-  set :degr2, get(:degr1) + 3
-  sleep get(:sleeps3)
-  
-  set :degr2, get(:degr1)
-  sleep get(:sleeps3)
-  
-  set :degr2, get(:degr1)
-  sleep get(:sleeps3)
-  
-  set :degr2, get(:degr1) + 1
-  sleep get(:sleeps3)
-  
-  set :degr2, get(:degr1)
-  sleep get(:sleeps3)
+  7.times do
+    set :degr2, get(:degr1)
+    sleep get(:sleeps4)
+    
+    set :degr2, get(:degr1)
+    sleep get(:sleeps4)
+    
+    set :degr2, get(:degr1)
+    sleep get(:sleeps4)
+    
+    set :degr2, get(:degr1) + 2
+    sleep get(:sleeps4)
+  end
+  set :degr2, get(:degr1) + 4
+  sleep get(:sleeps4)
 end
 
 live_loop :roots3 do
   #3
-  set :degr3, get(:degr2)
-  sleep get(:sleeps3)
+  12.times do
+    set :degr3, get(:degr2) + 0
+    sleep get(:sleeps4)
+    
+    set :degr3, get(:degr2) + 0
+    sleep get(:sleeps4)
+  end
   
-  set :degr3, get(:degr2)
-  sleep get(:sleeps3)
-  
-  set :degr3, get(:degr2) + 9
-  sleep get(:sleeps3)
+  set :degr3, get(:degr2) + 1
+  sleep get(:sleeps4)
 end
 
 
 #---------------------------------------RELEASE-----------------------------------------------------------------------------#
 live_loop :rels do
-  #8
-  set :rel1, (ring 0.125, 0.125,0.125,0.125,0.125,0.125,0.125,0.125).tick(:gouteh)
-  sleep get(:sleeps3)
+  #9
+  set :rel1, (ring 0.125, 0.125,0.125,0.125,0.125,0.125,0.125,0.125, 0.125).tick(:gouteh)
+  sleep get(:sleeps4)
 end
 
-live_loop :rels1 do
+live_loop :rels1, delay: 6 do
   #7
-  set :rel2, get(:rel1)
-  sleep get(:sleeps3)
-  
-  set :rel2, get(:rel1)
-  sleep get(:sleeps3)
-  
-  set :rel2, get(:rel1) + (ring 0.25).tick(:fpkhjg)
-  sleep get(:sleeps3)
-  
-  set :rel2, get(:rel1)
-  sleep get(:sleeps3)
-  
-  set :rel2, get(:rel1)
-  sleep get(:sleeps3)
-  
-  set :rel2, get(:rel1) +0.25
-  sleep get(:sleeps3)
-  
-  set :rel2, get(:rel1)
-  sleep get(:sleeps3)
+  1.times do
+    set :rel2, get(:rel1)
+    sleep get(:sleeps4)
+    
+    set :rel2, get(:rel1)
+    sleep get(:sleeps4)
+    
+    set :rel2, get(:rel1)
+    sleep get(:sleeps4)
+    
+    set :rel2, get(:rel1) + 0.25
+    sleep get(:sleeps4)
+    
+    set :rel2, get(:rel1)
+    sleep get(:sleeps4)
+    
+    set :rel2, get(:rel1)
+    sleep get(:sleeps4)
+    
+    set :rel2, get(:rel1)
+    sleep get(:sleeps4)
+  end
+  9.times do
+    set :rel2, get(:rel1)
+    sleep get(:sleeps4)
+  end
 end
 
 live_loop :rels2 do
   #5
-  set :rel3, get(:rel2) +0.25
-  sleep get(:sleeps3)
-  
-  set :rel3, get(:rel2)
-  sleep get(:sleeps3)
-  
-  set :rel3, get(:rel2)
-  sleep get(:sleeps3)
-  
-  set :rel3, get(:rel2) + (ring 0.25).tick(:olhwe)
-  sleep get(:sleeps3)
-  
-  set :rel3, get(:rel2)
-  sleep get(:sleeps3)
+  1.times do
+    set :rel3, get(:rel2)
+    sleep get(:sleeps4)
+    
+    set :rel3, get(:rel2)
+    sleep get(:sleeps4)
+    
+    set :rel3, get(:rel2) +  0.25
+    sleep get(:sleeps4)
+    
+    set :rel3, get(:rel2)
+    sleep get(:sleeps4)
+    
+    set :rel3, get(:rel2)
+    sleep get(:sleeps4)
+  end
+  9.times do
+    set :rel3, get(:rel2)
+    sleep get(:sleeps4)
+  end
 end
 
 live_loop :rels3 do
   #3
   
-  set :rel4, get(:rel3) + 0.25
-  sleep get(:sleeps3)
+  set :rel4, get(:rel3)
+  sleep get(:sleeps4)
   
   set :rel4, get(:rel3)
-  sleep get(:sleeps3)
+  sleep get(:sleeps4)
   
-  set :rel4, get(:rel3) + (ring 0.25).tick(:olhwfsdfse)
-  sleep get(:sleeps3)
+  set :rel4, get(:rel3)
+  sleep get(:sleeps4)
 end
 
 
 #--------------------------------------------PLAYER------------------------------------------
-live_loop :degrees, sync: :metro do
+
+use_synth :dpulse
+
+with_fx :reverb, room: (ring 0.5, 0.25, 0.1).tick(:gsdih0), damp: 0.1 do
   
-  play degree(get(:degr3), :C3, :minor), release: get(:rel3),  amp: 5
   
-  sleep get(:sleeps3)
+  live_loop :synthss do
+    use_random_seed 678
+    12.times do
+      use_synth_defaults note: 47, res: 0.2, ring: 0.2, room: 50, reverb_time: rrand(500,800), pulse_width: rrand(0.1, 0.8), release: rrand(1, 0.25), cutoff: rrand(120,80)
+      sleep get(:sleeps4)
+    end
+  end
   
+  
+  live_loop :degrees, sync: :metro do
+    
+    
+    with_bpm  70 do
+      
+      4.times do
+        
+        play degree(get(:degr3), :d3, :minor), release: get(:rel4),  amp: 5
+        
+        sleep get(:sleeps4)
+        
+        play degree(get(:degr3), :d3, :minor), release: get(:rel4),  amp: 5
+        
+        sleep get(:sleeps4)
+        
+        play degree(get(:degr3), :d3, :minor), release: get(:rel4),  amp: 5
+        
+        sleep get(:sleeps4)
+      end
+      
+      18.times do
+        
+        play degree(get(:degr3), :c3, :minor), release: get(:rel4),  amp: 5
+        
+        sleep get(:sleeps4)
+        
+        play degree(get(:degr3), :c3, :minor), release: get(:rel4),  amp: 5
+        
+        sleep get(:sleeps4)
+        
+        play degree(get(:degr3), :c3, :minor), release: get(:rel4),  amp: 5
+        
+        sleep get(:sleeps4)
+      end
+    end
+  end
 end
